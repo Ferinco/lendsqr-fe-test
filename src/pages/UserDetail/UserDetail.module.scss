@@ -25,7 +25,7 @@
 .topBar {
   @include flex-between;
   @include mobile { flex-direction: column; align-items: flex-start; gap: $space-md; }
-  h1 { font-size: 24px; color: $color-navy; font-weight: $font-weight-semibold; }
+  h1 { font-size: 24px; color: $color-navy; font-weight: 500; }
 }
 
 .actions {
@@ -65,6 +65,9 @@
   align-items: center;
   gap: $space-xl;
   flex-wrap: wrap;
+   border: 1px solid #213F7D0F;
+  border-radius: 4px;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
   @include mobile { flex-direction: column; align-items: flex-start; }
 }
 
@@ -72,6 +75,11 @@
   @include flex-start;
   gap: $space-md;
   min-width: 200px;
+  h2 {
+    font-size: 24px;
+    font-weight: 500;
+    color: $color-navy;
+  }
 }
 
 .avatar {
@@ -122,7 +130,7 @@
 
 .balance {
   font-size: 22px;
-  font-weight: $font-weight-bold;
+  font-weight: 500;
   color: $color-navy;
 }
 
@@ -134,12 +142,17 @@
 .tabCard {
   @include card;
   overflow: hidden;
+   border: 1px solid #213F7D0F;
+  border-radius: 4px;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
 }
 
 .tabs {
   display: flex;
   border-bottom: 1px solid $color-border;
   overflow-x: auto;
+  overflow-y: hidden;
+height: fit-content !important;
 
   &::-webkit-scrollbar { height: 0; }
 }
@@ -156,7 +169,6 @@
   white-space: nowrap;
   transition: all 0.15s;
   margin-bottom: -1px;
-
   &:hover { color: $color-navy; }
 }
 
@@ -196,16 +208,16 @@
 
 .infoLabel {
   font-size: $font-size-xs;
-  font-weight: $font-weight-medium;
-  color: $color-text;
+  font-weight: 400;
+  color: #545F7D;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .infoValue {
   font-size: $font-size-md;
-  font-weight: $font-weight-semibold;
-  color: $color-navy;
+  font-weight: 500;
+  color: #545F7D;
 }
 
 .sectionDivider {
