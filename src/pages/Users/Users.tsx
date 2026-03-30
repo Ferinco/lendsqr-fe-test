@@ -213,7 +213,9 @@ const Users = () => {
   const [perPage, setPerPage] = useState(10);
   const [filterOpen, setFilterOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+
   const filterRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -237,7 +239,10 @@ const Users = () => {
     const handler = (e: MouseEvent) => {
       if (filterRef.current && !filterRef.current.contains(e.target as Node))
         setFilterOpen(false);
-      setActiveMenu(null);
+
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setActiveMenu(null);
+      }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -267,8 +272,11 @@ const Users = () => {
 
   const paged = filtered.slice((page - 1) * perPage, page * perPage);
 
-  const formatDate = (iso: string) => {
+  const formatDate = (iso?: string) => {
+    if (!iso) return "May 15, 2020 10:00 AM"; // mock fallback
     const d = new Date(iso);
+    if (isNaN(d.getTime())) return "May 15, 2020 10:00 AM";
+
     return (
       d.toLocaleDateString("en-US", {
         month: "short",
@@ -322,192 +330,178 @@ const Users = () => {
             value={withSavings}
           />
         </div>
-
-        <div className={styles.tableCard}>
-          <div className={styles.filterWrapper} ref={filterRef}>
-            <div className={styles.tableHeader}>
-              <span>
-                ORGANIZATION{" "}
-                <button onClick={() => setFilterOpen(!filterOpen)}>
-                  <FilterIcon />
-                </button>
-              </span>
-              <span>
-                USERNAME{" "}
-                <button>
-                  <FilterIcon />
-                </button>
-              </span>
-              <span>
-                EMAIL{" "}
-                <button>
-                  <FilterIcon />
-                </button>
-              </span>
-              <span>
-                PHONE NUMBER{" "}
-                <button>
-                  <FilterIcon />
-                </button>
-              </span>
-              <span>
-                DATE JOINED{" "}
-                <button>
-                  <FilterIcon />
-                </button>
-              </span>
-              <span>
-                STATUS{" "}
-                <button>
-                  <FilterIcon />
-                </button>
-              </span>
-              <span></span>
-            </div>
-            {filterOpen && (
-              <div className={styles.filterDrop}>
-                <FilterPanel
-                  orgs={orgs}
-                  onFilter={handleFilter}
-                  onReset={() => {
-                    setFiltered(users);
-                    setPage(1);
-                  }}
-                />
-              </div>
-            )}
-          </div>
-
-          <div className={styles.tableBody}>
-            {paged.map((user) => (
-              <div key={user.id} className={styles.row}>
-                <span>{user.orgName}</span>
-                <span>{user.userName}</span>
-                <span className={styles.email}>{user.email}</span>
-                <span>{user.phoneNumber}</span>
-                <span>{formatDate(user.createdAt)}</span>
-                <span>
-                  <StatusBadge
-                    status={
-                      user.status as
-                        | "Active"
-                        | "Inactive"
-                        | "Pending"
-                        | "Blacklisted"
-                    }
-                  />
-                </span>
-                <span className={styles.menuCell}>
-                  <button
-                    className={styles.menuBtn}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActiveMenu(activeMenu === user.id ? null : user.id);
-                    }}
-                    aria-label="More options"
-                  >
-                    <svg width="4" height="16" viewBox="0 0 4 16" fill="none">
-                      <circle cx="2" cy="2" r="1.5" fill="#545F7D" />
-                      <circle cx="2" cy="8" r="1.5" fill="#545F7D" />
-                      <circle cx="2" cy="14" r="1.5" fill="#545F7D" />
-                    </svg>
+        <div>
+          <div className={styles.tableCard}>
+            <div className={styles.filterWrapper} ref={filterRef}>
+              <div className={styles.tableHeader}>
+                <span style={{ position: "relative" }}>
+                  ORGANIZATION{" "}
+                  <button onClick={() => setFilterOpen(!filterOpen)}>
+                    <FilterIcon />
                   </button>
-                  {activeMenu === user.id && (
-                    <div className={styles.menu}>
-                      <button onClick={() => navigate(`/users/${user.id}`)}>
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="none"
-                        >
-                          <circle
-                            cx="8"
-                            cy="8"
-                            r="3"
-                            stroke="#545F7D"
-                            strokeWidth="1.2"
-                          />
-                          <path
-                            d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z"
-                            stroke="#545F7D"
-                            strokeWidth="1.2"
-                          />
-                        </svg>
-                        View Details
-                      </button>
-                      <button>
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="none"
-                        >
-                          <circle
-                            cx="8"
-                            cy="6"
-                            r="3"
-                            stroke="#545F7D"
-                            strokeWidth="1.2"
-                          />
-                          <path
-                            d="M2.5 14c0-3.038 2.462-5.5 5.5-5.5s5.5 2.462 5.5 5.5"
-                            stroke="#545F7D"
-                            strokeWidth="1.2"
-                            strokeLinecap="round"
-                          />
-                          <path
-                            d="M12 4l2 2-2 2"
-                            stroke="#E4033B"
-                            strokeWidth="1.2"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                        Blacklist User
-                      </button>
-                      <button>
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="none"
-                        >
-                          <circle
-                            cx="8"
-                            cy="6"
-                            r="3"
-                            stroke="#545F7D"
-                            strokeWidth="1.2"
-                          />
-                          <path
-                            d="M2.5 14c0-3.038 2.462-5.5 5.5-5.5s5.5 2.462 5.5 5.5"
-                            stroke="#545F7D"
-                            strokeWidth="1.2"
-                            strokeLinecap="round"
-                          />
-                          <path
-                            d="M12 8l1.5 1.5L16 7"
-                            stroke="#39CDCC"
-                            strokeWidth="1.2"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                        Activate User
-                      </button>
+                  {filterOpen && (
+                    <div className={styles.filterDrop}>
+                      <FilterPanel
+                        orgs={orgs}
+                        onFilter={handleFilter}
+                        onReset={() => {
+                          setFiltered(users);
+                          setPage(1);
+                          setFilterOpen(false);
+                        }}
+                      />
                     </div>
                   )}
                 </span>
+                <span>
+                  USERNAME{" "}
+                  <button>
+                    <FilterIcon />
+                  </button>
+                </span>
+                <span>
+                  EMAIL{" "}
+                  <button>
+                    <FilterIcon />
+                  </button>
+                </span>
+                <span>
+                  PHONE NUMBER{" "}
+                  <button>
+                    <FilterIcon />
+                  </button>
+                </span>
+                <span>
+                  DATE JOINED{" "}
+                  <button>
+                    <FilterIcon />
+                  </button>
+                </span>
+                <span>
+                  STATUS{" "}
+                  <button>
+                    <FilterIcon />
+                  </button>
+                </span>
+                <span></span>
               </div>
-            ))}
-          </div>
+            </div>
 
-          <Pagination
-            total={filtered.length}
-            page={page}
-            perPage={perPage}
-            onPageChange={setPage}
-            onPerPageChange={setPerPage}
-          />
+            <div className={styles.tableBody}>
+              {paged.map((user) => (
+                <div key={user.id} className={styles.row}>
+                  <span>{user.orgName}</span>
+                  <span>{user.userName}</span>
+                  <span className={styles.email}>{user.email}</span>
+                  <span>{user.phoneNumber}</span>
+                  <span>{formatDate(user.createdAt)}</span>
+                  <span>
+                    <StatusBadge
+                      status={
+                        user.status as
+                          | "Active"
+                          | "Inactive"
+                          | "Pending"
+                          | "Blacklisted"
+                      }
+                    />
+                  </span>
+                  <span className={styles.menuCell}>
+                    <button
+                      className={styles.menuBtn}
+                      onClick={(e) => {
+                        e.stopPropagation(); // prevent document click listener from firing
+                        setActiveMenu(activeMenu === user.id ? null : user.id);
+                      }}
+                      aria-label="More options"
+                    >
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style={{ pointerEvents: "none" }}
+                      >
+                        <path
+                          d="M9.99984 13.3333C10.9203 13.3333 11.6665 14.0795 11.6665 15C11.6665 15.9205 10.9203 16.6667 9.99984 16.6667C9.07936 16.6667 8.33317 15.9205 8.33317 15C8.33317 14.0795 9.07936 13.3333 9.99984 13.3333ZM9.99984 8.33333C10.9203 8.33333 11.6665 9.07952 11.6665 10C11.6665 10.9205 10.9203 11.6667 9.99984 11.6667C9.07936 11.6667 8.33317 10.9205 8.33317 10C8.33317 9.07952 9.07936 8.33333 9.99984 8.33333ZM9.99984 3.33333C10.9203 3.33333 11.6665 4.07952 11.6665 5C11.6665 5.92047 10.9203 6.66667 9.99984 6.66667C9.07936 6.66667 8.33317 5.92047 8.33317 5C8.33317 4.07952 9.07936 3.33333 9.99984 3.33333Z"
+                          fill="#545F7D"
+                        />
+                      </svg>
+                    </button>
+                    {activeMenu === user.id && (
+                      <div className={styles.menu} ref={menuRef}>
+                        <button onClick={() => navigate(`/users/${user.id}`)}>
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M8 3.33337C4.66667 3.33337 1.81333 5.40671 0.666664 8.33337C1.81333 11.26 4.66667 13.3334 8 13.3334C11.3333 13.3334 14.1867 11.26 15.3333 8.33337C14.1867 5.40671 11.3333 3.33337 8 3.33337ZM8 11.3334C6.34667 11.3334 5 9.98671 5 8.33337C5 6.68004 6.34667 5.33337 8 5.33337C9.65333 5.33337 11 6.68004 11 8.33337C11 9.98671 9.65333 11.3334 8 11.3334ZM8 6.66671C7.08 6.66671 6.33333 7.41337 6.33333 8.33337C6.33333 9.25337 7.08 10 8 10C8.92 10 9.66667 9.25337 9.66667 8.33337C9.66667 7.41337 8.92 6.66671 8 6.66671Z"
+                              fill="#545F7D"
+                            />
+                          </svg>
+                          View Details
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveMenu(null);
+                          }}
+                        >
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M10 5.33333C10 6.43333 9.1 7.33333 8 7.33333C6.9 7.33333 6 6.43333 6 5.33333C6 4.23333 6.9 3.33333 8 3.33333C9.1 3.33333 10 4.23333 10 5.33333ZM5.33333 9.33333C3.49333 9.33333 1.33333 10.2533 1.33333 12.0933V12.6667H10.6667V12.0933C10.6667 10.2533 8.50667 9.33333 6.66667 9.33333C6.22 9.33333 5.76667 9.33333 5.33333 9.33333ZM11.3333 9.33333L12.2733 10.2733L10.3933 12.1533L11.3333 13.0933L13.2133 11.2133L15.0933 13.0933L16 12.1533L14.12 10.2733L16 8.39333L15.06 7.45333L13.18 9.33333L11.3 7.45333L10.36 8.39333L11.3333 9.33333Z"
+                              fill="#545F7D"
+                            />
+                          </svg>
+                          Blacklist User
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveMenu(null);
+                          }}
+                        >
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M10 5.33333C10 6.43333 9.1 7.33333 8 7.33333C6.9 7.33333 6 6.43333 6 5.33333C6 4.23333 6.9 3.33333 8 3.33333C9.1 3.33333 10 4.23333 10 5.33333ZM5.33333 9.33333C3.49333 9.33333 1.33333 10.2533 1.33333 12.0933V12.6667H10.6667V12.0933C10.6667 10.2533 8.50667 9.33333 6.66667 9.33333C6.22 9.33333 5.76667 9.33333 5.33333 9.33333ZM15.1533 8.52667L15.9333 9.30667L12.9867 12.38L11.2133 10.6067L12 9.82667L12.9867 10.8133L15.1533 8.52667Z"
+                              fill="#545F7D"
+                            />
+                          </svg>
+                          Activate User
+                        </button>
+                      </div>
+                    )}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+          {!filterOpen && (
+            <Pagination
+              total={filtered.length}
+              page={page}
+              perPage={perPage}
+              onPageChange={setPage}
+              onPerPageChange={setPerPage}
+            />
+          )}
         </div>
       </div>
     </Layout>

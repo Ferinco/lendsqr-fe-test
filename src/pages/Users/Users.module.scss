@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   gap: $space-xl;
+  padding-bottom: 20px;
 }
 
 .title {
@@ -71,19 +72,18 @@
 .tableHeader {
   display: grid;
   grid-template-columns: 1fr 1fr 1.5fr 1fr 1.2fr 1fr 48px;
-  padding: $space-lg $space-lg 0;
-  border-bottom: 1px solid $color-border;
+  padding: 0 $space-lg;
+  border-bottom: 1px solid rgba(#213F7D, 0.1);
   gap: $space-md;
 
   span {
     @include flex-start;
-    gap: 6px;
-    font-size: $font-size-xs;
-    font-weight: $font-weight-semibold;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
     color: $color-text;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding-bottom: $space-md;
+    padding: 20px 0;
 
     button {
       background: none;
@@ -91,7 +91,7 @@
       cursor: pointer;
       padding: 0;
       display: flex;
-      opacity: 0.6;
+      opacity: 0.7;
       transition: opacity 0.15s;
       &:hover { opacity: 1; }
     }
@@ -103,7 +103,6 @@
 .filterDrop {
   position: absolute;
   top: 60px;
-  left: $space-lg;
   z-index: 50;
 }
 
@@ -115,16 +114,18 @@
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr 1.5fr 1fr 1.2fr 1fr 48px;
-  padding: $space-md $space-lg;
-  border-bottom: 1px solid rgba($color-border, 0.5);
+  padding: 0 $space-lg;
+  min-height: 62px;
+  border-bottom: 1px solid rgba(#213F7D, 0.1);
   align-items: center;
   gap: $space-md;
   transition: background 0.1s;
 
+  &:last-child { border-bottom: none; }
   &:hover { background: rgba($color-primary, 0.02); }
 
   span {
-    font-size: $font-size-base;
+    font-size: 14px;
     color: $color-text;
     @include truncate;
   }
@@ -137,12 +138,13 @@
 
 .email {
   color: $color-text !important;
-  font-size: $font-size-sm !important;
+  font-size: 14px !important;
 }
 
 .menuCell {
   position: relative;
   @include flex-center;
+  overflow: visible !important;
 }
 
 .menuBtn {
