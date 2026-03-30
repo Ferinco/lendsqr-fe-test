@@ -1,6 +1,4 @@
 import styles from "./Navbar.module.scss";
-import lendsqrLogo from "@/assets/lendsqr-logo.png";
-import avatar from "@/assets/avatar.png";
 
 interface NavbarProps {
   onMenuToggle: () => void;
@@ -24,7 +22,7 @@ const Navbar = ({ onMenuToggle }: NavbarProps) => (
     </button>
 
     <a href="/users" className={styles.logo}>
-      <img src={lendsqrLogo} alt="Lendsqr" height={30} />
+      <img src="/assets/lendsqr-logo.svg" alt="Lendsqr" height={30} />
     </a>
 
     <div className={styles.search}>
@@ -62,7 +60,7 @@ const Navbar = ({ onMenuToggle }: NavbarProps) => (
         </svg>
       </button>
       <button className={styles.profile} aria-label="User menu">
-        <img src={avatar} alt="Adedeji" className={styles.avatar} />
+        <img src="/assets/avatar.png" alt="Adedeji" className={styles.avatar} />
         <span>Adedeji</span>
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
           <path
