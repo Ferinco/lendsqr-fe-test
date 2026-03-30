@@ -4,39 +4,34 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 16px;
+  padding: 0 16px;
+  height: 30px;
   border-radius: 100px;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
+  font-size: 14px;
+  font-weight: 400;
   text-transform: capitalize;
-
-  .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-  }
+  white-space: nowrap;
 
   &.active {
-    background: $status-active-bg;
-    color: $status-active-text;
-    .dot { background: $status-active-text; }
+    background: rgba(#39CD62, 0.06);
+    color: #39CD62;
   }
 
   &.inactive {
-    background: $status-inactive-bg;
-    color: $status-inactive-text;
-    .dot { background: $status-inactive-text; }
+    background: rgba(#545F7D, 0.06);
+    color: #545F7D;
+    .dot { background: #545F7D; }
   }
 
   &.pending {
-    background: $status-pending-bg;
-    color: $status-pending-text;
-    .dot { background: $status-pending-text; }
+    background: rgba(#E9B200, 0.1);
+    color: #E9B200;
+    .dot { background: #E9B200; }
   }
 
   &.blacklisted {
-    background: $status-blacklisted-bg;
-    color: $status-blacklisted-text;
-    .dot { background: $status-blacklisted-text; }
+    background: rgba(#E4033B, 0.1);
+    color: #E4033B;
+    .dot { background: #E4033B; }
   }
 }

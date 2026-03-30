@@ -8,7 +8,6 @@ interface StatusBadgeProps {
 
 const StatusBadge = ({ status }: StatusBadgeProps) => (
   <span className={`${styles.badge} ${styles[status.toLowerCase()]}`}>
-    <span className={styles.dot} />
     {status}
   </span>
 );

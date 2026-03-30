@@ -3,9 +3,11 @@
 
 .pagination {
   @include flex-between;
-  padding: $space-xl 0 $space-md;
+   padding:  $space-lg 0;
+
   flex-wrap: wrap;
   gap: $space-md;
+
 }
 
 .info {
@@ -41,36 +43,35 @@
 .page {
   width: 32px;
   height: 32px;
-  border-radius: $border-radius-sm;
   border: none;
-  background: rgba($color-text, 0.1);
-  color: $color-navy;
-  font-weight: $font-weight-semibold;
-  font-size: $font-size-base;
+  background: transparent;
+  color: rgba(#545F7D, 0.6);
+  font-weight: 400;
+  font-size: 16px;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: color 0.15s;
 
   &:hover:not(.active) {
-    background: rgba($color-primary, 0.1);
+    color: #545F7D;
   }
 
   &.active {
-    background: $color-primary;
-    color: $color-white;
+    font-weight: 500;
+    color: #545F7D;
   }
 }
 
 .arrow {
   width: 32px;
   height: 32px;
-  border-radius: $border-radius-sm;
+  border-radius: 4px;
   border: none;
-  background: rgba($color-text, 0.1);
+  background: rgba(#213F7D, 0.1);
   cursor: pointer;
   @include flex-center;
   transition: all 0.15s;
 
-  &:hover:not(:disabled) { background: rgba($color-primary, 0.15); }
+  &:hover:not(:disabled) { background: rgba(#213F7D, 0.15); }
   &:disabled { opacity: 0.4; cursor: not-allowed; }
 }
 
@@ -78,8 +79,9 @@
   width: 32px;
   height: 32px;
   @include flex-center;
-  color: $color-text;
-  font-weight: $font-weight-semibold;
+  color: rgba(#545F7D, 0.6);
+  font-weight: 400;
+  font-size: 16px;
 }
 
 .count {
