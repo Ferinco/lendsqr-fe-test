@@ -1,0 +1,126 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: $color-white;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.04);
+  @include flex-between;
+  padding: 0 60px;
+  z-index: 200;
+  gap: $space-xl;
+
+  @include mobile {
+    padding: 0 $space-md;
+    height: 72px;
+  }
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $space-xs;
+  @include flex-center;
+
+  @include mobile { display: flex; }
+}
+
+.logo {
+  flex-shrink: 0;
+  img { height: 30px; }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 400px;
+  border: 1px solid rgba($color-text, 0.2);
+  border-radius: $border-radius-md;
+  overflow: hidden;
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    font-size: $font-size-base;
+    color: $color-navy;
+    font-family: $font-family;
+    background: transparent;
+
+    &::placeholder { color: $color-text-light; }
+  }
+
+  button {
+    width: 56px;
+    height: 40px;
+    background: $color-primary;
+    border: none;
+    cursor: pointer;
+    @include flex-center;
+    flex-shrink: 0;
+    transition: background 0.2s;
+
+    &:hover { background: $color-primary-dark; }
+  }
+
+  @include mobile { display: none; }
+}
+
+.actions {
+  @include flex-start;
+  gap: $space-xl;
+  flex-shrink: 0;
+}
+
+.docsLink {
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $color-navy;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  @include mobile { display: none; }
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $space-xs;
+  @include flex-center;
+  transition: opacity 0.2s;
+
+  &:hover { opacity: 0.7; }
+}
+
+.profile {
+  @include flex-start;
+  gap: $space-sm;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: $font-family;
+
+  span {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-navy;
+
+    @include mobile { display: none; }
+  }
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
