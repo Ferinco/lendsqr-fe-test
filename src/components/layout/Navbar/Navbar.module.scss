@@ -10,7 +10,7 @@
   background: $color-white;
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.04);
   @include flex-between;
-  padding: 0 60px;
+  padding: 0 40px;
   z-index: 200;
   gap: $space-xl;
 
@@ -41,28 +41,33 @@
   align-items: center;
   flex: 1;
   max-width: 400px;
-  border: 1px solid rgba($color-text, 0.2);
   border-radius: $border-radius-md;
-  overflow: hidden;
+    height: 40px;
+    overflow: hidden;
+
 
   input {
     flex: 1;
-    border: none;
     outline: none;
-    padding: 10px 16px;
+    height: 40px;
+  border-top-left-radius: $border-radius-md;
+  border-bottom-left-radius: $border-radius-md;
+    padding: 0px 15px;
     font-size: $font-size-base;
     color: $color-navy;
     font-family: $font-family;
     background: transparent;
-
+    border: 1px solid rgba($color-text, 0.2) !important;
+border-right: none !important;
     &::placeholder { color: $color-text-light; }
   }
 
   button {
     width: 56px;
-    height: 40px;
+    height: 100%;
+    
     background: $color-primary;
-    border: none;
+    border: 1px solid $color-primary;
     cursor: pointer;
     @include flex-center;
     flex-shrink: 0;

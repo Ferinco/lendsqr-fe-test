@@ -4,9 +4,9 @@ interface NavbarProps {
   onMenuToggle: () => void;
 }
 
-const Navbar = ({ onMenuToggle }: NavbarProps) => (
+const Navbar = ({ onMenuToggle: _onMenuToggle }: NavbarProps) => (
   <header className={styles.navbar}>
-    <button
+    {/* <button
       className={styles.hamburger}
       onClick={onMenuToggle}
       aria-label="Open menu"
@@ -19,7 +19,7 @@ const Navbar = ({ onMenuToggle }: NavbarProps) => (
           strokeLinecap="round"
         />
       </svg>
-    </button>
+    </button> */}
 
     <a href="/users" className={styles.logo}>
       <img src="/assets/lendsqr-logo.svg" alt="Lendsqr" height={30} />
@@ -45,29 +45,36 @@ const Navbar = ({ onMenuToggle }: NavbarProps) => (
         Docs
       </a>
       <button className={styles.iconBtn} aria-label="Notifications">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <svg
+          width="26"
+          height="26"
+          viewBox="0 0 26 26"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
-            d="M10 2a6 6 0 016 6v3l1.5 2H2.5L4 11V8a6 6 0 016-6z"
+            d="M12.9985 1.53313C13.8909 1.53328 14.6959 2.06499 15.0483 2.8847C15.3569 3.60368 15.2632 4.4233 14.8198 5.05071C16.1884 5.45586 17.3981 6.2817 18.2749 7.41497C19.215 8.63014 19.717 10.1268 19.6997 11.663V13.5976L19.7124 14.1318C19.8389 16.7974 20.9561 19.3268 22.8579 21.2177C23.0323 21.3906 23.0857 21.6534 22.9917 21.8808L22.9907 21.8818C22.896 22.1069 22.6763 22.2548 22.4292 22.2538V22.2548H15.9751C15.68 23.6544 14.4456 24.6697 13.0005 24.6699C11.5552 24.6699 10.3212 23.6545 10.0259 22.2548H3.5708V22.2538C3.32378 22.2547 3.104 22.1069 3.00928 21.8818L3.0083 21.8808C2.91432 21.6534 2.96767 21.3906 3.14209 21.2177C5.17061 19.201 6.3072 16.4577 6.30029 13.5976V11.4921C6.30037 9.97954 6.81235 8.51204 7.75342 7.32806C8.62786 6.22583 9.82512 5.42899 11.1733 5.04681C10.7325 4.41996 10.64 3.60211 10.9478 2.8847C11.3002 2.06487 12.106 1.53313 12.9985 1.53313ZM11.2729 22.2548C11.5268 22.9795 12.2132 23.4782 12.9995 23.4784C13.786 23.4784 14.4731 22.9796 14.7271 22.2548H11.2729ZM13.2642 6.00384C11.7637 5.93197 10.2995 6.47748 9.2124 7.51458C8.12478 8.55105 7.51025 9.98892 7.51221 11.4921V13.5966L7.50244 14.1298C7.39775 16.6483 6.49245 19.068 4.92236 21.0419H21.0767C19.3963 18.9291 18.4791 16.305 18.4878 13.5966V11.6601C18.5123 10.2259 17.9837 8.83802 17.0103 7.78411C16.0378 6.73124 14.6953 6.09315 13.2642 6.00481V6.00384ZM13.0005 2.75481C12.4377 2.75481 11.9811 3.21058 11.981 3.77337C11.981 4.18514 12.2296 4.55686 12.6108 4.71478C12.9436 4.85205 13.3203 4.80317 13.605 4.59368L13.7212 4.49407C14.0121 4.20191 14.0989 3.76395 13.9419 3.38372C13.784 3.00272 13.4121 2.75497 13.0005 2.75481Z"
+            fill="#213F7D"
             stroke="#213F7D"
-            strokeWidth="1.5"
-          />
-          <path
-            d="M8 16a2 2 0 004 0"
-            stroke="#213F7D"
-            strokeWidth="1.5"
-            strokeLinecap="round"
+            stroke-width="0.4"
           />
         </svg>
       </button>
       <button className={styles.profile} aria-label="User menu">
         <img src="/assets/avatar.png" alt="Adedeji" className={styles.avatar} />
         <span>Adedeji</span>
-        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
-            d="M1 1l4 4 4-4"
-            stroke="#213F7D"
-            strokeWidth="1.5"
-            strokeLinecap="round"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M9.39229 12.0516C9.72823 12.425 10.2751 12.4219 10.6079 12.0516L13.4829 8.857C13.8188 8.48434 13.6852 8.182 13.1845 8.182H6.81567C6.31489 8.182 6.18363 8.48746 6.51723 8.857L9.39229 12.0516Z"
+            fill="#213F7D"
           />
         </svg>
       </button>
