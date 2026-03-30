@@ -1,0 +1,69 @@
+// ============================================================
+// _variables.scss — Design Tokens (from Figma)
+// ============================================================
+
+// --- Colors ---
+$color-primary: #39cdcc; // Teal — buttons, links, active states
+$color-primary-dark: #2fb7b6; // Hover state for primary
+$color-navy: #213f7d; // Dark navy — headings, sidebar text
+$color-text: #545f7d; // Body text, labels, table headers
+$color-text-light: #8b9bb4; // Placeholder, muted text
+$color-bg: #fbfbfb; // Main content background
+$color-white: #ffffff; // Sidebar, cards, inputs
+$color-border: #e0e0e7; // Borders, dividers
+$color-sidebar-bg: #ffffff;
+$color-hover-bg: #f0fcf9; // Hover on sidebar items
+
+// --- Status Badge Colors ---
+$status-active-bg: #f3fcf6;
+$status-active-text: #39cd62;
+$status-inactive-bg: #f5f5f7;
+$status-inactive-text: #545f7d;
+$status-pending-bg: #fdf7e5;
+$status-pending-text: #e9b200;
+$status-blacklisted-bg: #fce6eb;
+$status-blacklisted-text: #e4033b;
+
+// --- Typography ---
+$font-family: "Work Sans", sans-serif;
+$font-size-xs: 10px;
+$font-size-sm: 12px;
+$font-size-base: 14px;
+$font-size-md: 16px;
+$font-size-lg: 20px;
+$font-size-xl: 24px;
+$font-size-2xl: 36px;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// --- Layout ---
+$sidebar-width: 283px;
+$navbar-height: 100px;
+$content-padding: 60px;
+$content-padding-sm: 24px;
+
+// --- Spacing ---
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 32px;
+$space-2xl: 48px;
+
+// --- Borders ---
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-full: 100px;
+
+// --- Shadows ---
+$shadow-card: 0px 4px 20px rgba(0, 0, 0, 0.04);
+$shadow-dropdown: 3px 4px 20px rgba(0, 0, 0, 0.08);
+
+// --- Breakpoints ---
+$bp-mobile: 768px;
+$bp-tablet: 1024px;
+$bp-desktop: 1440px;
