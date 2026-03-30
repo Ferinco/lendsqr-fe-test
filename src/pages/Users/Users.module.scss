@@ -1,0 +1,195 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl;
+}
+
+.title {
+  font-size: 24px;
+  color: #213F7D;
+  font-weight:500;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-lg;
+
+  @include tablet { grid-template-columns: repeat(2, 1fr); }
+  @include mobile { grid-template-columns: 1fr; }
+}
+
+.statCard {
+  @include card;
+  padding: $space-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  border: 1px solid #213F7D0F;
+  border-radius: 4px;
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+}
+
+.statIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  @include flex-center;
+}
+
+.statLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #545F7D;
+  text-transform: uppercase;
+
+  margin-top: $space-sm;
+}
+
+.statValue {
+  font-size: 24px;
+  font-weight: $font-weight-bold;
+  color: $color-navy;
+}
+
+.tableCard {
+  @include card;
+  overflow: visible;
+  position: relative;
+  border: 1px solid #213F7D0F;
+  border-radius: 4px;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+}
+
+.filterWrapper {
+  position: relative;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr 1fr 1.2fr 1fr 48px;
+  padding: $space-lg $space-lg 0;
+  border-bottom: 1px solid $color-border;
+  gap: $space-md;
+
+  span {
+    @include flex-start;
+    gap: 6px;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-text;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-bottom: $space-md;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      opacity: 0.6;
+      transition: opacity 0.15s;
+      &:hover { opacity: 1; }
+    }
+  }
+
+  @include mobile { display: none; }
+}
+
+.filterDrop {
+  position: absolute;
+  top: 60px;
+  left: $space-lg;
+  z-index: 50;
+}
+
+.tableBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr 1fr 1.2fr 1fr 48px;
+  padding: $space-md $space-lg;
+  border-bottom: 1px solid rgba($color-border, 0.5);
+  align-items: center;
+  gap: $space-md;
+  transition: background 0.1s;
+
+  &:hover { background: rgba($color-primary, 0.02); }
+
+  span {
+    font-size: $font-size-base;
+    color: $color-text;
+    @include truncate;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+}
+
+.email {
+  color: $color-text !important;
+  font-size: $font-size-sm !important;
+}
+
+.menuCell {
+  position: relative;
+  @include flex-center;
+}
+
+.menuBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $space-sm;
+  border-radius: $border-radius-sm;
+  @include flex-center;
+  transition: background 0.1s;
+  &:hover { background: rgba($color-text, 0.08); }
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: $color-white;
+  box-shadow: $shadow-dropdown;
+  border-radius: $border-radius-md;
+  padding: $space-sm 0;
+  z-index: 10;
+  min-width: 160px;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    width: 100%;
+    padding: 10px $space-md;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: $font-size-base;
+    color: $color-navy;
+    font-family: $font-family;
+    transition: background 0.15s;
+    text-align: left;
+    white-space: nowrap;
+
+    &:hover { background: rgba($color-primary, 0.06); }
+  }
+}
+
+.loading {
+  @include flex-center;
+  min-height: 300px;
+  font-size: $font-size-lg;
+  color: $color-text;
+}

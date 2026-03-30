@@ -1,0 +1,89 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.pagination {
+  @include flex-between;
+  padding: $space-xl 0 $space-md;
+  flex-wrap: wrap;
+  gap: $space-md;
+}
+
+.info {
+  @include flex-start;
+  gap: $space-sm;
+  font-size: $font-size-base;
+  color: $color-text;
+
+  select {
+    height: 28px;
+    padding: 0 $space-sm;
+    border: 1px solid rgba($color-text, 0.2);
+    border-radius: $border-radius-sm;
+    background: rgba($color-text, 0.1);
+    font-weight: $font-weight-semibold;
+    color: $color-navy;
+    font-size: $font-size-base;
+    font-family: $font-family;
+    cursor: pointer;
+  }
+
+  strong {
+    font-weight: $font-weight-semibold;
+    color: $color-navy;
+  }
+}
+
+.pages {
+  @include flex-start;
+  gap: $space-xs;
+}
+
+.page {
+  width: 32px;
+  height: 32px;
+  border-radius: $border-radius-sm;
+  border: none;
+  background: rgba($color-text, 0.1);
+  color: $color-navy;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &:hover:not(.active) {
+    background: rgba($color-primary, 0.1);
+  }
+
+  &.active {
+    background: $color-primary;
+    color: $color-white;
+  }
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: $border-radius-sm;
+  border: none;
+  background: rgba($color-text, 0.1);
+  cursor: pointer;
+  @include flex-center;
+  transition: all 0.15s;
+
+  &:hover:not(:disabled) { background: rgba($color-primary, 0.15); }
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
+}
+
+.dots {
+  width: 32px;
+  height: 32px;
+  @include flex-center;
+  color: $color-text;
+  font-weight: $font-weight-semibold;
+}
+
+.count {
+  font-size: $font-size-sm;
+  color: $color-text;
+  display: none;
+}

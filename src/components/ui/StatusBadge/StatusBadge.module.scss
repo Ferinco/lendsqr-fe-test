@@ -1,0 +1,42 @@
+@use '@/styles/variables' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  text-transform: capitalize;
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  &.active {
+    background: $status-active-bg;
+    color: $status-active-text;
+    .dot { background: $status-active-text; }
+  }
+
+  &.inactive {
+    background: $status-inactive-bg;
+    color: $status-inactive-text;
+    .dot { background: $status-inactive-text; }
+  }
+
+  &.pending {
+    background: $status-pending-bg;
+    color: $status-pending-text;
+    .dot { background: $status-pending-text; }
+  }
+
+  &.blacklisted {
+    background: $status-blacklisted-bg;
+    color: $status-blacklisted-text;
+    .dot { background: $status-blacklisted-text; }
+  }
+}

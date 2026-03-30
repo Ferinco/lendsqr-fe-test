@@ -1,0 +1,239 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+}
+
+.backBtn {
+  @include flex-start;
+  gap: $space-sm;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $color-text;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+  width: fit-content;
+  &:hover { color: $color-navy; }
+}
+
+.topBar {
+  @include flex-between;
+  @include mobile { flex-direction: column; align-items: flex-start; gap: $space-md; }
+  h1 { font-size: 24px; color: $color-navy; font-weight: $font-weight-semibold; }
+}
+
+.actions {
+  @include flex-start;
+  gap: $space-md;
+}
+
+.blacklistBtn, .activateBtn {
+  height: 40px;
+  padding: 0 $space-lg;
+  border-radius: $border-radius-md;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.blacklistBtn {
+  border: 1px solid $status-blacklisted-text;
+  color: $status-blacklisted-text;
+  background: transparent;
+  &:hover { background: $status-blacklisted-bg; }
+}
+
+.activateBtn {
+  border: 1px solid $color-primary;
+  color: $color-primary;
+  background: transparent;
+  &:hover { background: rgba($color-primary, 0.08); }
+}
+
+.profileCard {
+  @include card;
+  padding: $space-xl;
+  display: flex;
+  align-items: center;
+  gap: $space-xl;
+  flex-wrap: wrap;
+  @include mobile { flex-direction: column; align-items: flex-start; }
+}
+
+.profileMain {
+  @include flex-start;
+  gap: $space-md;
+  min-width: 200px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba($color-text, 0.08);
+  @include flex-center;
+  flex-shrink: 0;
+}
+
+.userId {
+  font-size: $font-size-sm;
+  color: $color-text;
+  display: block;
+  margin-top: 4px;
+}
+
+.profileDivider {
+  width: 1px;
+  height: 80px;
+  background: $color-border;
+  @include mobile { display: none; }
+}
+
+.tierSection {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  min-width: 120px;
+}
+
+.tierLabel {
+  font-size: $font-size-sm;
+  color: $color-text;
+}
+
+.stars {
+  @include flex-start;
+  gap: 2px;
+}
+
+.balanceSection {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.balance {
+  font-size: 22px;
+  font-weight: $font-weight-bold;
+  color: $color-navy;
+}
+
+.bankInfo {
+  font-size: $font-size-sm;
+  color: $color-text;
+}
+
+.tabCard {
+  @include card;
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid $color-border;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar { height: 0; }
+}
+
+.tab {
+  padding: $space-md $space-xl;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $color-text;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  margin-bottom: -1px;
+
+  &:hover { color: $color-navy; }
+}
+
+.activeTab {
+  color: $color-navy;
+  border-bottom-color: $color-primary;
+  font-weight: $font-weight-semibold;
+}
+
+.tabContent {
+  padding: $space-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+}
+
+.sectionTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-navy;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: $space-xl $space-lg;
+
+  @include tablet { grid-template-columns: repeat(3, 1fr); }
+  @include mobile { grid-template-columns: repeat(2, 1fr); }
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.infoLabel {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-text;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.infoValue {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-navy;
+}
+
+.sectionDivider {
+  height: 1px;
+  background: $color-border;
+  margin: $space-sm 0;
+}
+
+.tabPlaceholder {
+  @include flex-center;
+  flex-direction: column;
+  gap: $space-md;
+  min-height: 200px;
+  color: $color-text;
+}
+
+.notFound {
+  @include flex-center;
+  flex-direction: column;
+  gap: $space-lg;
+  min-height: 300px;
+
+  button {
+    color: $color-primary;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+  }
+}
