@@ -31,6 +31,9 @@ export interface Profile {
   bvn: string;
   address: string;
   currency: string;
+  maritalStatus: string;
+  children: string;
+  typeOfResidence: string;
 }
 
 export interface User {

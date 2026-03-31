@@ -74,6 +74,36 @@
   position: relative;
 }
 
+.filterBar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: $space-sm $space-lg;
+  border-bottom: 1px solid rgba(#213F7D, 0.1);
+  position: relative;
+}
+
+.filterTrigger {
+  @include flex-start;
+  gap: $space-xs;
+  background: none;
+  border: 1px solid rgba(#213F7D, 0.2);
+  border-radius: $border-radius-sm;
+  padding: 6px $space-sm;
+  font-size: $font-size-sm;
+  color: $color-text;
+  cursor: pointer;
+  font-family: $font-family;
+  transition: all 0.15s;
+
+  &:hover { border-color: $color-primary; color: $color-navy; }
+}
+
+.tableScroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .tableHeader {
   display: grid;
   grid-template-columns: 1fr 1fr 1.5fr 1fr 1.2fr 1fr 48px;
@@ -105,8 +135,13 @@
   @include tablet {
     grid-template-columns: 1fr 1fr 1.5fr 1fr 1.2fr 1fr 48px;
     font-size: 11px;
+    min-width: 800px;
   }
-  @include mobile { display: none; }
+  @include mobile {
+    grid-template-columns: 1fr 1fr 1.5fr 1fr 1.2fr 1fr 48px;
+    font-size: 11px;
+    min-width: 800px;
+  }
 }
 
 .filterDrop {
@@ -141,18 +176,11 @@
 
   @include tablet {
     grid-template-columns: 1fr 1fr 1.5fr 1fr 1.2fr 1fr 48px;
-    min-width: 700px;
+    min-width: 800px;
   }
   @include mobile {
-    grid-template-columns: 1fr 1fr auto;
-    grid-template-rows: auto auto;
-    padding: $space-md;
-    gap: $space-sm;
-
-    span:nth-child(4),
-    span:nth-child(5) {
-      display: none;
-    }
+    grid-template-columns: 1fr 1fr 1.5fr 1fr 1.2fr 1fr 48px;
+    min-width: 800px;
   }
 }
 

@@ -218,7 +218,7 @@ height: fit-content !important;
   gap: $space-xl $space-lg;
 
   @include tablet { grid-template-columns: repeat(3, 1fr); }
-  @include mobile { grid-template-columns: repeat(2, 1fr); }
+  @include mobile { grid-template-columns: 1fr; }
 }
 
 .infoItem {

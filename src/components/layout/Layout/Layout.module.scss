@@ -12,6 +12,13 @@
   margin-top: 100px;
   padding: 40px $content-padding;
   min-height: calc(100vh - 100px);
+  max-width: 100%;
+  overflow-x: hidden;
+
+  @media (max-width: #{$bp-tablet}) {
+    margin-left: 0;
+    padding: 32px 24px;
+  }
 
   @media (max-width: #{$bp-mobile}) {
     margin-left: 0;

@@ -6,7 +6,7 @@
   top: 100px;
   left: 0;
   width: $sidebar-width;
-  height: 100vh;
+  height: calc(100vh - 100px);
   background: $color-white;
   box-shadow: 3px 0 20px rgba(0, 0, 0, 0.04);
   overflow-y: auto;
@@ -18,7 +18,18 @@
   gap: 0;
   transition: transform 0.3s ease;
 
+  @include tablet {
+    top: 100px;
+    height: calc(100vh - 100px);
+    transform: translateX(-100%);
+    &.open {
+      transform: translateX(0);
+    }
+  }
+
   @include mobile {
+    top: 72px;
+    height: calc(100vh - 72px);
     transform: translateX(-100%);
     &.open {
       transform: translateX(0);
@@ -28,6 +39,13 @@
 
 .overlay {
   display: none;
+  @include tablet {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+  }
   @include mobile {
     display: block;
     position: fixed;

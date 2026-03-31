@@ -21,13 +21,14 @@
 }
 
 .hamburger {
-  display: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: $space-xs;
   @include flex-center;
+  display: none; 
 
+  @include tablet { display: flex; }
   @include mobile { display: flex; }
 }
 
@@ -83,6 +84,8 @@ border-right: none !important;
   @include flex-start;
   gap: $space-xl;
   flex-shrink: 0;
+
+  @include mobile { gap: $space-md; }
 }
 
 .docsLink {

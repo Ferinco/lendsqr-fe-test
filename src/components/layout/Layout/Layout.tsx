@@ -12,7 +12,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className={styles.root}>
-      <Navbar onMenuToggle={() => setSidebarOpen(true)} />
+      <Navbar onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <main className={styles.main}>{children}</main>
     </div>
