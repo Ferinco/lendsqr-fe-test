@@ -8,11 +8,23 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
   return isLoggedIn ? <>{children}</> : <Navigate to="/" replace />;
 }
 
+function PublicRoute({ children }: { children: React.ReactNode }) {
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  return !isLoggedIn ? <>{children}</> : <Navigate to="/users" replace />;
+}
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
         <Route
           path="/users"
           element={
