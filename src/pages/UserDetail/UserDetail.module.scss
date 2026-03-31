@@ -31,6 +31,11 @@
 .actions {
   @include flex-start;
   gap: $space-md;
+
+  @include mobile {
+    flex-wrap: wrap;
+    width: 100%;
+  }
 }
 
 .blacklistBtn, .activateBtn {
@@ -42,6 +47,13 @@
   letter-spacing: 0.08em;
   cursor: pointer;
   transition: all 0.2s;
+  font-family: $font-family;
+
+  @include mobile {
+    flex: 1;
+    padding: 0 $space-md;
+    font-size: 11px;
+  }
 }
 
 .blacklistBtn {
@@ -68,7 +80,12 @@
    border: 1px solid #213F7D0F;
   border-radius: 4px;
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
-  @include mobile { flex-direction: column; align-items: flex-start; }
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: $space-md;
+    gap: $space-md;
+  }
 }
 
 .profileMain {
@@ -183,6 +200,10 @@ height: fit-content !important;
   display: flex;
   flex-direction: column;
   gap: $space-lg;
+
+  @include mobile {
+    padding: $space-md;
+  }
 }
 
 .sectionTitle {

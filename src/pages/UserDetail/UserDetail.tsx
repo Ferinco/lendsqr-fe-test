@@ -180,11 +180,21 @@ const UserDetail = () => {
                     label="GENDER"
                     value={user.profile?.gender || "N/A"}
                   />
-                  <InfoItem label="MARITAL STATUS" value="Single" />
-                  <InfoItem label="CHILDREN" value="None" />
+                  <InfoItem
+                    label="MARITAL STATUS"
+                    value={user.profile?.maritalStatus || "N/A"}
+                  />
+                  <InfoItem
+                    label="CHILDREN"
+                    value={user.profile?.children || "N/A"}
+                  />
                   <InfoItem
                     label="TYPE OF RESIDENCE"
-                    value={user.profile?.address || "N/A"}
+                    value={
+                      user.profile?.typeOfResidence ||
+                      user.profile?.address ||
+                      "N/A"
+                    }
                   />
                 </div>
 
