@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.scss";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin@lendsqr.com");
+  const [password, setPassword] = useState("password123");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
