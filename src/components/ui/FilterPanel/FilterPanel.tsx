@@ -104,10 +104,14 @@ const FilterPanel = ({ onFilter, onReset, orgs }: FilterPanelProps) => {
       </div>
 
       <div className={styles.actions}>
-        <button className={styles.resetBtn} onClick={handleReset}>
+        <button type="button" className={styles.resetBtn} onClick={handleReset}>
           Reset
         </button>
-        <button className={styles.filterBtn} onClick={() => onFilter(values)}>
+        <button
+          type="button"
+          className={styles.filterBtn}
+          onClick={() => onFilter(values)}
+        >
           Filter
         </button>
       </div>
